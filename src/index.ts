@@ -27,10 +27,10 @@ app.get("/health", (c) => {
   });
 });
 
+
+
 // Better Auth Route Handler for all auth endpoints
-app.all("/api/auth/*", (c) => {
-  return auth.handler(c.req.raw);
-});
+app.all("/api/auth/*", (c) => auth.handler(c.req.raw)); 
 
 const port = Number(process.env.PORT) || 4000;
 console.log(`🚀 OmniStock Auth Service running on port ${port} (Bun + Hono + Better Auth)`);

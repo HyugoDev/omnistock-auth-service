@@ -110,6 +110,7 @@ export const member = pgTable(
       .notNull()
       .references(() => user.id, { onDelete: "cascade" }),
     role: text("role").default("member").notNull(),
+    assignedWarehouseId: text("assigned_warehouse_id"),
     createdAt: timestamp("created_at").notNull(),
   },
   (table) => [
@@ -127,6 +128,7 @@ export const invitation = pgTable(
       .references(() => organization.id, { onDelete: "cascade" }),
     email: text("email").notNull(),
     role: text("role"),
+    assignedWarehouseId: text("assigned_warehouse_id"),
     status: text("status").default("pending").notNull(),
     expiresAt: timestamp("expires_at").notNull(),
     createdAt: timestamp("created_at").defaultNow().notNull(),

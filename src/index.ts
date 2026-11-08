@@ -10,7 +10,7 @@ app.use(
   cors({
     origin: ["http://localhost:4200", "http://127.0.0.1:4200"],
     allowHeaders: ["Content-Type", "Authorization"],
-    allowMethods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowMethods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
     exposeHeaders: ["Content-Length"],
     maxAge: 600,
     credentials: true,
@@ -27,8 +27,8 @@ app.get("/health", (c) => {
   });
 });
 
-// Better Auth API Route Handler
-app.on(["POST", "GET"], "/api/auth/**", (c) => {
+// Better Auth Route Handler for all auth endpoints
+app.all("/api/auth/*", (c) => {
   return auth.handler(c.req.raw);
 });
 

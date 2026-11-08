@@ -13,6 +13,10 @@ export const auth = betterAuth({
   }),
   secret: process.env.BETTER_AUTH_SECRET || "omnistock_dev_secret_key_must_be_32_characters_long",
   baseURL: process.env.BETTER_AUTH_URL || "http://localhost:4000",
+  trustedOrigins: [
+    "http://localhost:4200",
+    "http://127.0.0.1:4200",
+  ],
   emailAndPassword: {
     enabled: true,
   },

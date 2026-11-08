@@ -1,6 +1,6 @@
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
-import { jwt, bearer, admin } from "better-auth/plugins";
+import { jwt, bearer, admin, organization } from "better-auth/plugins";
 import { db } from "./db";
 import * as schema from "./db/schema";
 
@@ -23,6 +23,7 @@ export const auth = betterAuth({
   plugins: [
     bearer(),
     admin(),
+    organization(),
     jwt({
       jwt: {
         issuer: process.env.JWT_ISSUER || "omnistock-auth-service",
